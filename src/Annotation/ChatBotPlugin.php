@@ -1,18 +1,18 @@
 <?php
 
-namespace Drupal\chatbox_api\Annotation;
+namespace Drupal\chatbot_api\Annotation;
 
 use Drupal\Component\Annotation\Plugin;
 
 /**
- * Defines a ChatBox Plugin item annotation object.
+ * Defines a Chatbot Plugin item annotation object.
  *
- * @see \Drupal\chatbox_api\Plugin\ChatboxPluginManager
+ * @see \Drupal\chatbot_api\Plugin\ChatbotPluginManager
  * @see plugin_api
  *
  * @Annotation
  */
-class ChatBox extends Plugin {
+class Chatbot extends Plugin {
 
 
   /**

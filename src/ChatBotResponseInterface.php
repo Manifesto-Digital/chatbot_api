@@ -1,13 +1,13 @@
 <?php
 
-namespace Drupal\chatbox_api;
+namespace Drupal\chatbot_api;
 
 /**
- * Request interface for Chatbox API.
+ * Request interface for Chatbot API.
  *
- * Request wrapper for services who want to work with Chatbox API.
+ * Request wrapper for services who want to work with Chatbot API.
  */
-interface ChatboxResponseInterface {
+interface ChatbotResponseInterface {
 
   /**
    * Set or Add session attribute.
@@ -18,9 +18,9 @@ interface ChatboxResponseInterface {
    *   The attribute value.
    *
    * @return self
-   *   The current ChatboxResponseInterface instance.
+   *   The current ChatbotResponseInterface instance.
    */
-  public function addChatboxAttribute($name, $value);
+  public function addChatbotAttribute($name, $value);
 
   /**
    * Set output speech as text.
@@ -29,9 +29,9 @@ interface ChatboxResponseInterface {
    *   The output message.
    *
    * @return self
-   *   The current ChatboxResponseInterface instance.
+   *   The current ChatbotResponseInterface instance.
    */
-  public function setChatboxRespond($text);
+  public function setChatbotRespond($text);
 
   /**
    * Add text to be displayed on the user device screen.
@@ -45,8 +45,8 @@ interface ChatboxResponseInterface {
    *   The title of current card. This is not implemented by all APIs.
    *
    * @return self
-   *   The current ChatboxResponseInterface instance.
+   *   The current ChatbotResponseInterface instance.
    */
-  public function setChatboxDisplayCard($content, $title = NULL);
+  public function setChatbotDisplayCard($content, $title = NULL);
 
 }

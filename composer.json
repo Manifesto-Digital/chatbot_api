@@ -1,14 +1,14 @@
 {
-  "name": "drupal/chatbox_api",
+  "name": "drupal/chatbot_api",
   "type": "drupal-module",
-  "description": "API for chatbox and Personal Assistant",
+  "description": "API for chatbot and Personal Assistant",
   "keywords": ["Drupal"],
   "license": "GPL-2.0+",
-  "homepage": "https://www.drupal.org/project/chatbox_api",
+  "homepage": "https://www.drupal.org/project/chatbot_api",
   "minimum-stability": "dev",
   "support": {
-    "issues": "https://www.drupal.org/project/issues/chatbox_api",
-    "source": "http://cgit.drupalcode.org/chatbox_api"
+    "issues": "https://www.drupal.org/project/issues/chatbot_api",
+    "source": "http://cgit.drupalcode.org/chatbot_api"
   },
   "require": { }
 }

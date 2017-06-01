@@ -3,8 +3,8 @@
 namespace Drupal\chatbot_alexa\EventSubscriber;
 
 use Drupal\alexa\AlexaEvent;
-use Drupal\chatbox_alexa\ChatBoxRequestAlexaProxy;
-use Drupal\chatbox_alexa\ChatBoxResponseAlexaProxy;
+use Drupal\chatbot_alexa\ChatbotRequestAlexaProxy;
+use Drupal\chatbot_alexa\ChatbotResponseAlexaProxy;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
@@ -27,16 +27,19 @@ class RequestSubscriber implements EventSubscriberInterface {
    *   The event object.
    */
   public function onRequest(AlexaEvent $event) {
-    /** @var \Drupal\chatbox_alexa\ChatBoxRequestAlexaProxy|\Alexa\Request\IntentRequest $request */
-    $request = new ChatBoxRequestAlexaProxy($event->getRequest());
-    $response = new ChatBoxResponseAlexaProxy($event->getResponse());
+    /** @var \Drupal\chatbot_alexa\ChatbotRequestAlexaProxy|\Alexa\Request\IntentRequest $request */
+    $request = new ChatbotRequestAlexaProxy($event->getRequest());
+    $response = new ChatbotResponseAlexaProxy($event->getResponse());
 
-    /** @var \Drupal\chatbox_api\Plugin\ChatBoxPluginManager $manager */
-    $manager = \Drupal::service('plugin.manager.chatbox_plugin');
+    /** @var \Drupal\chatbot_api\Plugin\ChatbotPluginManager $manager */
+    $manager = \Drupal::service('plugin.manager.chatbot_plugin');
     if ($manager->hasDefinition($request->intentName)) {
-      $plugin = $manager->createInstance($request->intentName);
-      $plugin->request = $request;
-      $plugin->response = $response;
+
+      $configuration = [
+        'request' => $request,
+        'response' => $response,
+      ];
+      $plugin = $manager->createInstance($request->intentName, $configuration);
       $plugin->process();
     }
   }

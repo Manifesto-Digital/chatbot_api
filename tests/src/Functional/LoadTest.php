@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\Tests\chatbox_api\Functional;
+namespace Drupal\Tests\chatbot_api\Functional;
 
 use Drupal\Core\Url;
 use Drupal\Tests\BrowserTestBase;
@@ -8,7 +8,7 @@ use Drupal\Tests\BrowserTestBase;
 /**
  * Simple test to ensure that main page loads with module enabled.
  *
- * @group chatbox_api
+ * @group chatbot_api
  */
 class LoadTest extends BrowserTestBase {
 
@@ -17,7 +17,7 @@ class LoadTest extends BrowserTestBase {
    *
    * @var array
    */
-  public static $modules = ['chatbox_api'];
+  public static $modules = ['chatbot_api'];
 
   /**
    * A user with permission to administer site configuration.

@@ -1,8 +1,0 @@
-name: chatbox_alexa
-type: module
-description: Alexa implementation for Chatbx API
-core: 8.x
-package: Custom
-dependencies:
-  - alexa
-  - chatbox_api

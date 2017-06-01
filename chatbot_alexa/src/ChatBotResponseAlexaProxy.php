@@ -1,16 +1,16 @@
 <?php
 
-namespace Drupal\chatbox_alexa;
+namespace Drupal\chatbot_alexa;
 
 use Alexa\Response\Response;
-use Drupal\chatbox_api\ChatBoxResponseInterface;
+use Drupal\chatbot_api\ChatbotResponseInterface;
 
 /**
- * Proxy wrapping Alexa Response in a ChatBoxRequestInterface.
+ * Proxy wrapping Alexa Response in a ChatbotRequestInterface.
  *
- * @package Drupal\chatbox_alexa
+ * @package Drupal\chatbot_alexa
  */
-class ChatBoxResponseAlexaProxy implements ChatBoxResponseInterface {
+class ChatbotResponseAlexaProxy implements ChatbotResponseInterface {
 
   /**
    * Original object.
@@ -20,7 +20,7 @@ class ChatBoxResponseAlexaProxy implements ChatBoxResponseInterface {
   protected $original;
 
   /**
-   * ChatBoxResponseAlexaProxy constructor.
+   * ChatbotResponseAlexaProxy constructor.
    *
    * @param \Alexa\Response\Response $original
    *   Original response instance.
@@ -47,21 +47,21 @@ class ChatBoxResponseAlexaProxy implements ChatBoxResponseInterface {
   /**
    * {@inheritdoc}
    */
-  public function addChatboxAttribute($name, $value) {
+  public function addChatbotAttribute($name, $value) {
     $this->original->addSessionAttribute($name, $value);
   }
 
   /**
    * {@inheritdoc}
    */
-  public function setChatboxRespond($text) {
+  public function setChatbotRespond($text) {
     return $this->original->respond($text);
   }
 
   /**
    * {@inheritdoc}
    */
-  public function setChatboxDisplayCard($title, $content = "") {
+  public function setChatbotDisplayCard($title, $content = "") {
     return $this->original->withCard($title, $content);
   }
 

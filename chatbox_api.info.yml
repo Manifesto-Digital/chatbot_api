@@ -1,5 +1,0 @@
-name: chatbox_api
-type: module
-description: API for chatbox and Personal Assistant
-core: 8.x
-package: Custom

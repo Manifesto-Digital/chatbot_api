@@ -1,4 +1,0 @@
-services:
-  plugin.manager.chatbox_plugin:
-    class: Drupal\chatbox_api\Plugin\ChatBoxPluginManager
-    parent: default_plugin_manager

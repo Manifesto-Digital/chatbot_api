@@ -1,13 +1,13 @@
 <?php
 
-namespace Drupal\chatbox_api;
+namespace Drupal\chatbot_api;
 
 /**
- * Request interface for Chatbox API.
+ * Request interface for Chatbot API.
  *
- * Request wrapper for services who want to work with Chatbox API.
+ * Request wrapper for services who want to work with Chatbot API.
  */
-interface ChatBoxRequestInterface {
+interface ChatbotRequestInterface {
 
   /**
    * Get session attribute.
@@ -20,7 +20,7 @@ interface ChatBoxRequestInterface {
    * @return mixed
    *   The attribute value.
    */
-  public function getChatboxAttribute($name, $default = NULL);
+  public function getChatbotAttribute($name, $default = NULL);
 
   /**
    * Get session slot.
@@ -33,6 +33,6 @@ interface ChatBoxRequestInterface {
    * @return string
    *   The slot value.
    */
-  public function getChatboxSlot($name, $default = NULL);
+  public function getChatbotSlot($name, $default = NULL);
 
 }
