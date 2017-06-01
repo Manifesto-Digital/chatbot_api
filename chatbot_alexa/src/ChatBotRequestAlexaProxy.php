@@ -42,6 +42,23 @@ class ChatbotRequestAlexaProxy implements ChatbotRequestInterface {
   }
 
   /**
+   * Proxy-er calling original request properties.
+   *
+   * @param string $name
+   *   The name of the property to get.
+   *
+   * @return mixed
+   *   The value of the property, NULL otherwise.
+   */
+  public function __get($name) {
+    if (isset($this->original->{$name})) {
+      return $this->original->{$name};
+    }
+
+    return NULL;
+  }
+
+  /**
    * {@inheritdoc}
    */
   public function getChatbotAttribute($name, $default = NULL) {
