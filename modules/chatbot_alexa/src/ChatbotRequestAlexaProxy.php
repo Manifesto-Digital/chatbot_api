@@ -36,9 +36,12 @@ class ChatbotRequestAlexaProxy implements ChatbotRequestInterface {
    *   The name of the method being called.
    * @param array $args
    *   Array of arguments passed to the method.
+   *
+   * @return mixed
+   *   The value returned from the called method.
    */
   public function __call($method, $args) {
-    call_user_func_array(array($this->original, $method), $args);
+    return call_user_func_array(array($this->original, $method), $args);
   }
 
   /**
@@ -62,14 +65,14 @@ class ChatbotRequestAlexaProxy implements ChatbotRequestInterface {
    * {@inheritdoc}
    */
   public function getChatbotAttribute($name, $default = NULL) {
-    $this->original->session->getAttribute($name, $default);
+    return $this->original->session->getAttribute($name, $default);
   }
 
   /**
    * {@inheritdoc}
    */
   public function getChatbotSlot($name, $default = NULL) {
-    $this->original->getSlot($name, $default);
+    return $this->original->getSlot($name, $default);
   }
 
 }
