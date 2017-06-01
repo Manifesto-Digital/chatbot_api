@@ -1,0 +1,14 @@
+{
+  "name": "drupal/chatbox_alexa",
+  "type": "drupal-module",
+  "description": "Alexa implementation for Chatbx API",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/chatbox_alexa",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/chatbox_alexa",
+    "source": "http://cgit.drupalcode.org/chatbox_alexa"
+  },
+  "require": { }
+}
