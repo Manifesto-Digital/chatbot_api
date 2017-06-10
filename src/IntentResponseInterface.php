@@ -3,11 +3,11 @@
 namespace Drupal\chatbot_api;
 
 /**
- * Request interface for Chatbot API.
+ * Request interface for Intent API.
  *
- * Request wrapper for services who want to work with Chatbot API.
+ * Request wrapper for services who want to work with Intent API Intents.
  */
-interface ChatbotResponseInterface {
+interface IntentResponseInterface {
 
   /**
    * Set or Add session attribute.
@@ -18,9 +18,9 @@ interface ChatbotResponseInterface {
    *   The attribute value.
    *
    * @return self
-   *   The current ChatbotResponseInterface instance.
+   *   The current IntentResponseInterface instance.
    */
-  public function addChatbotAttribute($name, $value);
+  public function addIntentAttribute($name, $value);
 
   /**
    * Set output speech as text.
@@ -29,9 +29,9 @@ interface ChatbotResponseInterface {
    *   The output message.
    *
    * @return self
-   *   The current ChatbotResponseInterface instance.
+   *   The current IntentResponseInterface instance.
    */
-  public function setChatbotRespond($text);
+  public function setIntentResponse($text);
 
   /**
    * Add text to be displayed on the user device screen.
@@ -45,8 +45,8 @@ interface ChatbotResponseInterface {
    *   The title of current card. This is not implemented by all APIs.
    *
    * @return self
-   *   The current ChatbotResponseInterface instance.
+   *   The current IntentResponseInterface instance.
    */
-  public function setChatbotDisplayCard($content, $title = NULL);
+  public function setIntentDisplayCard($content, $title = NULL);
 
 }

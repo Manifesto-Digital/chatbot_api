@@ -3,11 +3,11 @@
 namespace Drupal\chatbot_api;
 
 /**
- * Request interface for Chatbot API.
+ * Request interface for Intent API.
  *
- * Request wrapper for services who want to work with Chatbot API.
+ * Request wrapper for services who want to work with Intent API Intents.
  */
-interface ChatbotRequestInterface {
+interface IntentRequestInterface {
 
   /**
    * Get session attribute.
@@ -20,7 +20,7 @@ interface ChatbotRequestInterface {
    * @return mixed
    *   The attribute value.
    */
-  public function getChatbotAttribute($name, $default = NULL);
+  public function getIntentAttribute($name, $default = NULL);
 
   /**
    * Get session slot.
@@ -33,6 +33,6 @@ interface ChatbotRequestInterface {
    * @return string
    *   The slot value.
    */
-  public function getChatbotSlot($name, $default = NULL);
+  public function getIntentSlot($name, $default = NULL);
 
 }

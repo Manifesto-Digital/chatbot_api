@@ -7,12 +7,12 @@ use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 
 /**
- * Provides the Chatbot Plugin plugin manager.
+ * Provides the Intent Plugin plugin manager.
  */
-class ChatbotPluginManager extends DefaultPluginManager {
+class IntentPluginManager extends DefaultPluginManager {
 
   /**
-   * Constructs a new ChatbotPluginManager object.
+   * Constructs a new IntentPluginManager object.
    *
    * @param \Traversable $namespaces
    *   An object that implements \Traversable which contains the root paths
@@ -23,10 +23,10 @@ class ChatbotPluginManager extends DefaultPluginManager {
    *   The module handler to invoke the alter hook with.
    */
   public function __construct(\Traversable $namespaces, CacheBackendInterface $cache_backend, ModuleHandlerInterface $module_handler) {
-    parent::__construct('Plugin/Chatbot', $namespaces, $module_handler, 'Drupal\chatbot_api\Plugin\ChatbotPluginInterface', 'Drupal\chatbot_api\Annotation\Chatbot');
+    parent::__construct('Plugin/Chatbot/Intent', $namespaces, $module_handler, 'Drupal\chatbot_api\Plugin\IntentPluginInterface', 'Drupal\chatbot_api\Annotation\Intent');
 
-    $this->alterInfo('chatbot_info');
-    $this->setCacheBackend($cache_backend, 'chatbot_info_plugins');
+    $this->alterInfo('chatbot_intent_info');
+    $this->setCacheBackend($cache_backend, 'chabot_intent_plugins');
   }
 
 }

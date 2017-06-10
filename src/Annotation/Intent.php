@@ -5,14 +5,14 @@ namespace Drupal\chatbot_api\Annotation;
 use Drupal\Component\Annotation\Plugin;
 
 /**
- * Defines a Chatbot Plugin item annotation object.
+ * Defines a Intent Plugin item annotation object.
  *
- * @see \Drupal\chatbot_api\Plugin\ChatbotPluginManager
+ * @see \Drupal\chatbot_api\Plugin\IntentPluginManager
  * @see plugin_api
  *
  * @Annotation
  */
-class Chatbot extends Plugin {
+class Intent extends Plugin {
 
 
   /**

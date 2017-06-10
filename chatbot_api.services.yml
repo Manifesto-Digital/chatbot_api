@@ -1,4 +1,4 @@
 services:
-  plugin.manager.chatbot_plugin:
-    class: Drupal\chatbot_api\Plugin\ChatbotPluginManager
+  plugin.manager.chatbot_intent_plugin:
+    class: Drupal\chatbot_api\Plugin\IntentPluginManager
     parent: default_plugin_manager

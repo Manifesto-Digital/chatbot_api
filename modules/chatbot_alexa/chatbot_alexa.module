@@ -16,7 +16,7 @@ function chatbot_alexa_help($route_name, RouteMatchInterface $route_match) {
     case 'help.page.chatbot_alexa':
       $output = '';
       $output .= '<h3>' . t('About') . '</h3>';
-      $output .= '<p>' . t('Alexa implementation for Chatbot API') . '</p>';
+      $output .= '<p>' . t('Alexa implementation for Intent API') . '</p>';
       return $output;
 
     default:

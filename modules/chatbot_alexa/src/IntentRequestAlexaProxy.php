@@ -3,14 +3,14 @@
 namespace Drupal\chatbot_alexa;
 
 use Alexa\Request\IntentRequest;
-use Drupal\chatbot_api\ChatbotRequestInterface;
+use Drupal\chatbot_api\IntentRequestInterface;
 
 /**
- * Proxy wrapping Alexa Request in a ChatbotRequestInterface.
+ * Proxy wrapping Alexa Request in a IntentRequestInterface.
  *
  * @package Drupal\chatbot_alexa
  */
-class ChatbotRequestAlexaProxy implements ChatbotRequestInterface {
+class IntentRequestAlexaProxy implements IntentRequestInterface {
 
   /**
    * Original object.
@@ -20,7 +20,7 @@ class ChatbotRequestAlexaProxy implements ChatbotRequestInterface {
   protected $original;
 
   /**
-   * ChatbotRequestAlexaProxy constructor.
+   * IntentRequestAlexaProxy constructor.
    *
    * @param \Alexa\Request\IntentRequest $original
    *   Original request instance.
@@ -64,14 +64,14 @@ class ChatbotRequestAlexaProxy implements ChatbotRequestInterface {
   /**
    * {@inheritdoc}
    */
-  public function getChatbotAttribute($name, $default = NULL) {
+  public function getIntentAttribute($name, $default = NULL) {
     return $this->original->session->getAttribute($name, $default);
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getChatbotSlot($name, $default = NULL) {
+  public function getIntentSlot($name, $default = NULL) {
     return $this->original->getSlot($name, $default);
   }
 

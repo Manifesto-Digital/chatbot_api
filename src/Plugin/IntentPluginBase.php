@@ -5,21 +5,21 @@ namespace Drupal\chatbot_api\Plugin;
 use Drupal\Component\Plugin\PluginBase;
 
 /**
- * Base class for Chatbot Plugin plugins.
+ * Base class for Intent Plugin plugins.
  */
-abstract class ChatbotPluginBase extends PluginBase implements ChatbotPluginInterface {
+abstract class IntentPluginBase extends PluginBase implements IntentPluginInterface {
 
   /**
    * The response.
    *
-   * @var \Drupal\chatbot_api\ChatbotResponseInterface
+   * @var \Drupal\chatbot_api\IntentResponseInterface
    */
   protected $response;
 
   /**
    * The response.
    *
-   * @var \Drupal\chatbot_api\ChatbotRequestInterface
+   * @var \Drupal\chatbot_api\IntentRequestInterface
    */
   protected $request;
 

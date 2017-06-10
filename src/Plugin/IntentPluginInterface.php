@@ -5,9 +5,9 @@ namespace Drupal\chatbot_api\Plugin;
 use Drupal\Component\Plugin\PluginInspectionInterface;
 
 /**
- * Defines an interface for Chatbot Plugin plugins.
+ * Defines an interface for Intent Plugin plugins.
  */
-interface ChatbotPluginInterface extends PluginInspectionInterface {
+interface IntentPluginInterface extends PluginInspectionInterface {
 
   /**
    * Process the request.
