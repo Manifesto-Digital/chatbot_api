@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains chatbot_alexa.module.
+ * Contains chatbot_api_alexa.module.
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
@@ -12,8 +12,8 @@ use Drupal\Core\Routing\RouteMatchInterface;
  */
 function chatbot_alexa_help($route_name, RouteMatchInterface $route_match) {
   switch ($route_name) {
-    // Main module help for the chatbot_alexa module.
-    case 'help.page.chatbot_alexa':
+    // Main module help for the chatbot_api_alexa module.
+    case 'help.page.chatbot_api_alexa':
       $output = '';
       $output .= '<h3>' . t('About') . '</h3>';
       $output .= '<p>' . t('Alexa implementation for Intent API') . '</p>';

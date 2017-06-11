@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\chatbot_alexa;
+namespace Drupal\chatbot_api_alexa;
 
 use Alexa\Request\IntentRequest;
 use Drupal\chatbot_api\IntentRequestInterface;
@@ -8,7 +8,7 @@ use Drupal\chatbot_api\IntentRequestInterface;
 /**
  * Proxy wrapping Alexa Request in a IntentRequestInterface.
  *
- * @package Drupal\chatbot_alexa
+ * @package Drupal\chatbot_api_alexa
  */
 class IntentRequestAlexaProxy implements IntentRequestInterface {
 

@@ -1,8 +1,8 @@
-name: chatbot_alexa
+name: chatbot_api_alexa
 type: module
 description: Alexa implementation for Chatbot API
 core: 8.x
-package: Custom
+package: Chatbot
 dependencies:
   - alexa
   - chatbot_api

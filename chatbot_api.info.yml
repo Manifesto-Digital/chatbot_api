@@ -2,4 +2,4 @@ name: chatbot_api
 type: module
 description: API for chatbot and Personal Assistant
 core: 8.x
-package: Custom
+package: Chatbot
