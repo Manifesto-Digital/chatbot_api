@@ -1,4 +1,4 @@
-name: helloworld_intent
+name: Chatbot API - HelloWorld Intent
 type: module
 description: Demo Intent for Chatbot API
 core: 8.x
