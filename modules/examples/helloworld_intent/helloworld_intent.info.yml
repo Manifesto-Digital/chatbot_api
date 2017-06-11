@@ -1,0 +1,5 @@
+name: helloworld_intent
+type: module
+description: Demo Intent for Chatbot API
+core: 8.x
+package: Chatbot
