@@ -2,9 +2,11 @@
 
 namespace Drupal\chatbot_api\Plugin;
 
+use Drupal\chatbot_api\Plugin\Discovery\IntentDerivativeDiscoveryDecorator;
 use Drupal\Core\Plugin\DefaultPluginManager;
 use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
+use Drupal\Core\Plugin\Discovery\AnnotatedClassDiscovery;
 
 /**
  * Provides the Intent Plugin plugin manager.
@@ -27,6 +29,17 @@ class IntentPluginManager extends DefaultPluginManager {
 
     $this->alterInfo('chatbot_intent_info');
     $this->setCacheBackend($cache_backend, 'chabot_intent_plugins');
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function getDiscovery() {
+    if (!$this->discovery) {
+      $discovery = new AnnotatedClassDiscovery($this->subdir, $this->namespaces, $this->pluginDefinitionAnnotationName, $this->additionalAnnotationNamespaces);
+      $this->discovery = new IntentDerivativeDiscoveryDecorator($discovery);
+    }
+    return $this->discovery;
   }
 
 }
