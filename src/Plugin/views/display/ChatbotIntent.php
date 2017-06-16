@@ -37,7 +37,7 @@ class ChatbotIntent extends DisplayPluginBase {
   /**
    * The Chatbot Intent plugins manager.
    *
-   * @var \Drupal\Component\Plugin\PluginManagerInterface
+   * @var \Drupal\chatbot_api\Plugin\IntentPluginManager
    */
   protected $intentManager;
 
@@ -181,7 +181,7 @@ class ChatbotIntent extends DisplayPluginBase {
       $form['intent_name'] = [
         '#type' => 'textfield',
         '#title' => $this->t('Intent Name'),
-        '#description' => $this->t('This is the Intent Name this view should handle. Intent names are case sensitive.'),
+        '#description' => $this->t('This is the Intent Name this view should handle. Intent names are case sensitive and only alphanumeric values and underscores (_) are allowed.'),
         '#default_value' => $this->getOption('intent_name'),
         '#required' => TRUE,
       ];
@@ -191,10 +191,16 @@ class ChatbotIntent extends DisplayPluginBase {
   public function validateOptionsForm(&$form, FormStateInterface $form_state) {
     parent::validateOptionsForm($form, $form_state);
 
-    // Avoid duplicated Intents.
     if ($form_state->get('section') === 'intent_name' && $intent_name = $form_state->getValue('intent_name')) {
+
+      // The intent name must be alphanumeric.
+      if (preg_match('/[^a-zA-Z0-9_]/', $intent_name)) {
+        $form_state->setError($form['intent_name'], 'Intent name must contain only alphanumeric values and underscores (_).');
+      }
+
+      // Avoid duplicated Intents.
       if ($this->intentManager->hasDefinition($intent_name)) {
-        $form_state->setError($form['intent_name'], 'Intent ' . $intent_name . ' already exists.');
+        $form_state->setError($form['intent_name'], 'Intent already exists.');
       }
     }
   }
@@ -206,8 +212,31 @@ class ChatbotIntent extends DisplayPluginBase {
     parent::submitOptionsForm($form, $form_state);
 
     if ($form_state->get('section') == 'intent_name') {
-      $this->setOption('intent_name', $form_state->getValue('intent_name'));
+      if ($this->getOption('intent_name') !== $form_state->getValue('intent_name')) {
+        $this->setOption('intent_name', $form_state->getValue('intent_name'));
+        $this->intentManager->clearCachedDefinitions();
+      }
     }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function validate() {
+    $errors = parent::validate();
+
+    if (!$this->getOption('intent_name')) {
+      $errors[] = $this->t('Intent name is required.');
+    }
+
+    return $errors;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function remove() {
+    $this->intentManager->clearCachedDefinitions();
   }
 
 }
