@@ -59,11 +59,6 @@ class ChatbotIntent extends DisplayPluginBase {
   /**
    * {@inheritdoc}
    */
-  //protected $usesAreas = FALSE;
-
-  /**
-   * {@inheritdoc}
-   */
   protected $usesOptions = FALSE;
 
   /**
@@ -197,6 +192,9 @@ class ChatbotIntent extends DisplayPluginBase {
     }
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function validateOptionsForm(&$form, FormStateInterface $form_state) {
     parent::validateOptionsForm($form, $form_state);
 
