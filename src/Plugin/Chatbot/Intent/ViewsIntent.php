@@ -76,8 +76,16 @@ class ViewsIntent extends IntentPluginBase implements ContainerFactoryPluginInte
       $container->get('entity.manager')->getStorage('view')
     );
   }
+
+  /**
+   * {@inheritdoc}
+   */
   public function process() {
-    $this->response->setIntentResponse('This is from the View!');
+    $output = $this->view->executeDisplay($this->displayID, []);
+    /** @var \Drupal\Core\Render\Renderer $renderer */
+    $renderer = \Drupal::service('renderer');
+    $this->response->setIntentResponse(trim(preg_replace('/\s+/', ' ', strip_tags($renderer->render($output)))));
+    //$this->response->setIntentResponse('This is from the View!');
   }
 
 }

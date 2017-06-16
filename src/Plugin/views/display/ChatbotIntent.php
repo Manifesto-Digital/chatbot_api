@@ -59,7 +59,7 @@ class ChatbotIntent extends DisplayPluginBase {
   /**
    * {@inheritdoc}
    */
-  protected $usesAreas = FALSE;
+  //protected $usesAreas = FALSE;
 
   /**
    * {@inheritdoc}
@@ -120,8 +120,11 @@ class ChatbotIntent extends DisplayPluginBase {
   protected function defineOptions() {
     $options = parent::defineOptions();
 
-    // Options for REST authentication.
+    // Options for Chatbot API Intent.
     $options['intent_name'] = ['default' => ''];
+
+    $options['pager']['contains']['type']['default'] = 'some';
+    $options['pager']['contains']['options']['default']['items_per_page'] = 1;
 
     unset($options['exposed_form']);
     unset($options['exposed_block']);
@@ -138,7 +141,7 @@ class ChatbotIntent extends DisplayPluginBase {
 
     unset($categories['page'], $categories['exposed'], $categories['title']);
     // Hide some settings, as they aren't useful for pure data output.
-    unset($options['show_admin_links'], $options['analyze-theme']);
+    unset($options['show_admin_links'], $options['analyze-theme'], $options['access']);
 
     $categories['intent'] = [
       'title' => $this->t('Intent settings'),
@@ -148,6 +151,7 @@ class ChatbotIntent extends DisplayPluginBase {
       ],
     ];
 
+    // Options definition.
     $options['intent_name'] = [
       'category' => 'intent',
       'title' => $this->t('Intent name'),
@@ -162,7 +166,7 @@ class ChatbotIntent extends DisplayPluginBase {
   }
 
   /**
-   * The display block handler returns the structure necessary for a block.
+   * {@inheritdoc}
    */
   public function execute() {
     parent::execute();
@@ -186,6 +190,11 @@ class ChatbotIntent extends DisplayPluginBase {
         '#required' => TRUE,
       ];
     }
+
+    // Warn users messing around with pager settings.
+    if (strpos($form_state->get('section'), 'pager') === 0) {
+      drupal_set_message($this->t('Pager settings should NOT be changed as behavior is unpredictable. Change them at your own risk!'), 'warning');
+    }
   }
 
   public function validateOptionsForm(&$form, FormStateInterface $form_state) {
@@ -199,7 +208,7 @@ class ChatbotIntent extends DisplayPluginBase {
       }
 
       // Avoid duplicated Intents.
-      if ($this->intentManager->hasDefinition($intent_name)) {
+      if ($this->getOption('intent_name') !== $form_state->getValue('intent_name') && $this->intentManager->hasDefinition($intent_name)) {
         $form_state->setError($form['intent_name'], 'Intent already exists.');
       }
     }
@@ -238,5 +247,4 @@ class ChatbotIntent extends DisplayPluginBase {
   public function remove() {
     $this->intentManager->clearCachedDefinitions();
   }
-
 }
