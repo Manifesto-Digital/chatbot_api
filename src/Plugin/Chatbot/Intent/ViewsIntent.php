@@ -6,6 +6,7 @@ use Drupal\chatbot_api\Plugin\IntentPluginBase;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Render\RendererInterface;
+use Drupal\views\Plugin\views\pager\PagerPluginBase;
 use Drupal\views\ViewExecutableFactory;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -118,8 +119,7 @@ class ViewsIntent extends IntentPluginBase implements ContainerFactoryPluginInte
     /** @var \Drupal\Core\Render\Renderer $renderer */
     $this->response->setIntentResponse(trim(preg_replace('/\s+/', ' ', strip_tags($this->renderer->render($output)))));
 
-    // Increment the iterator, so next time we pull the next content item.
-    $this->response->addIntentAttribute($this->pluginId . 'Iterator', $this->iteration + 1);
+    $this->incrementIterationProgress();
   }
 
   /**
@@ -154,7 +154,22 @@ class ViewsIntent extends IntentPluginBase implements ContainerFactoryPluginInte
    * Set the pager to the right place.
    */
   protected function processIterationProgress() {
-    $this->view->pager->setOffset($this->iteration);
+    if ($this->view->pager->getPluginId() !== 'none') {
+      $items_per_page = (int) $this->view->pager->getItemsPerPage();
+      $this->view->pager->setOffset($items_per_page * $this->iteration);
+    }
+  }
+
+  /**
+   * Increment the iterator.
+   *
+   * Increment the iterator/pager offset, so next time we pull the next
+   * content item.
+   */
+  protected function incrementIterationProgress() {
+    if ($this->view->pager->getPluginId() !== 'none') {
+      $this->response->addIntentAttribute($this->pluginId . 'Iterator', $this->iteration + 1);
+    }
   }
 
 }
