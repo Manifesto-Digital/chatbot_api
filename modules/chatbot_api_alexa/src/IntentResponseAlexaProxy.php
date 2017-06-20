@@ -61,7 +61,7 @@ class IntentResponseAlexaProxy implements IntentResponseInterface {
   /**
    * {@inheritdoc}
    */
-  public function setIntentDisplayCard($title, $content = "") {
+  public function setIntentDisplayCard($content, $title = "") {
     return $this->original->withCard($title, $content);
   }
 
