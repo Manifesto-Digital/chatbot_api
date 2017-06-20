@@ -64,6 +64,13 @@ class IntentRequestAlexaProxy implements IntentRequestInterface {
   /**
    * {@inheritdoc}
    */
+  public function getIntentName() {
+    return $this->original->intentName;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function getIntentAttribute($name, $default = NULL) {
     return $this->original->session->getAttribute($name, $default);
   }

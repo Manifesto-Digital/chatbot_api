@@ -10,6 +10,14 @@ namespace Drupal\chatbot_api;
 interface IntentRequestInterface {
 
   /**
+   * Get Intent name.
+   *
+   * @return string
+   *   Return the Intent name.
+   */
+  public function getIntentName();
+
+  /**
    * Get session attribute.
    *
    * @param string $name

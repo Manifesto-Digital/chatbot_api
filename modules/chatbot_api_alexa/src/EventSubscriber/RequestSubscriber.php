@@ -33,13 +33,13 @@ class RequestSubscriber implements EventSubscriberInterface {
 
     /** @var \Drupal\chatbot_api\Plugin\IntentPluginManager $manager */
     $manager = \Drupal::service('plugin.manager.chatbot_intent_plugin');
-    if ($manager->hasDefinition($request->intentName)) {
+    if ($manager->hasDefinition($request->getIntentName())) {
 
       $configuration = [
         'request' => $request,
         'response' => $response,
       ];
-      $plugin = $manager->createInstance($request->intentName, $configuration);
+      $plugin = $manager->createInstance($request->getIntentName(), $configuration);
       $plugin->process();
     }
   }
