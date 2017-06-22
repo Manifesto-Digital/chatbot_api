@@ -8,7 +8,7 @@ use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Provides Chatbot\Intent plugin definitions for all Views chatbot_intent displays.
+ * Provides Chatbot\Intent plugin definitions for Views chatbot_intent displays.
  *
  * @see \Drupal\chatbot_api\Plugin\Chatbot\Intent\ViewsIntent
  */
